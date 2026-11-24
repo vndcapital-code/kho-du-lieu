@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kho Dữ Liệu – VND CAPITAL</title>
+<meta name="theme-color" content="#141413">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141413'/%3E%3Cpath d='M18 22h28v6H18zm0 10h28v6H18zm0 10h18v6H18z' fill='%23D97757'/%3E%3C/svg%3E">
+<style>
+:root{--cam:#D97757;--cam-dam:#C15F3C;--cam-nhat:#FBEDE7;--den:#141413;--xam:#6B6A65;--vien:#E7E5DE;--nen:#FAF9F5;--trang:#fff;--xanh:#2E7D4F;--do:#B3261E}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--nen);color:var(--den);font-size:15px;line-height:1.5}
+header{background:var(--den);color:#fff;padding:12px 18px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:5}
+.logo{width:34px;height:34px;border-radius:9px;background:var(--cam);display:grid;place-items:center;font-weight:800;color:var(--den)}
+header h1{font-size:17px;margin:0;font-weight:700;letter-spacing:.2px}
+header small{display:block;color:#B9B7AE;font-size:12px;font-weight:400}
+.sp{flex:1}
+.btn{border:1px solid var(--vien);background:var(--trang);color:var(--den);padding:9px 14px;border-radius:10px;font:inherit;font-weight:600;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--den)}
+.btn.cam{background:var(--cam);border-color:var(--cam);color:#fff}
+.btn.cam:hover{background:var(--cam-dam);border-color:var(--cam-dam)}
+.btn.toi{background:transparent;color:#fff;border-color:#3a3a37}
+.btn.toi:hover{border-color:var(--cam)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.nho{padding:5px 10px;font-size:13px;border-radius:8px}
+main{max-width:980px;margin:0 auto;padding:18px}
+.the{background:var(--trang);border:1px solid var(--vien);border-radius:16px;padding:18px;margin-bottom:16px}
+.the h2{font-size:15px;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.the h2 .so{background:var(--den);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-grid;place-items:center;font-size:12px}
+#vung{border:2px dashed #CFCBBF;border-radius:14px;padding:28px 16px;text-align:center;cursor:pointer;transition:.15s;background:var(--nen)}
+#vung.keo{border-color:var(--cam);background:var(--cam-nhat)}
+#vung b{display:block;font-size:16px;margin-bottom:4px}
+#vung span{color:var(--xam);font-size:13px}
+textarea{width:100%;min-height:74px;border:1px solid var(--vien);border-radius:12px;padding:10px 12px;font:inherit;resize:vertical;background:var(--nen)}
+textarea:focus,select:focus{outline:2px solid var(--cam);border-color:transparent}
+.hang{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.loi-nhap{color:var(--do);font-size:13px;margin-top:6px;white-space:pre-line}
+.caidat{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.caidat label{font-size:13px;color:var(--xam);display:block;margin-bottom:4px}
+select{width:100%;border:1px solid var(--vien);border-radius:10px;padding:8px 10px;font:inherit;background:var(--nen)}
+.goiy{font-size:12.5px;color:var(--xam);margin-top:6px}
+#ds{display:flex;flex-direction:column;gap:10px}
+.muc{border:1px solid var(--vien);border-radius:12px;padding:12px 14px;background:var(--trang)}
+.muc .dau{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.muc .ten{font-weight:600;word-break:break-all;flex:1;min-width:180px}
+.nhan{font-size:12px;padding:2px 9px;border-radius:99px;background:var(--nen);border:1px solid var(--vien);white-space:nowrap}
+.nhan.cho{color:var(--xam)}
+.nhan.dang{background:var(--cam-nhat);border-color:var(--cam);color:var(--cam-dam)}
+.nhan.xong{background:#E8F3EC;border-color:#BFDCCB;color:var(--xanh)}
+.nhan.loi{background:#FBEAE9;border-color:#F0C4C1;color:var(--do)}
+.thanh{height:5px;background:var(--vien);border-radius:9px;margin-top:9px;overflow:hidden}
+.thanh i{display:block;height:100%;width:0;background:var(--cam);transition:width .3s}
+.ttin{font-size:12.5px;color:var(--xam);margin-top:6px;white-space:pre-line}
+.xem{margin-top:10px;background:var(--nen);border:1px solid var(--vien);border-radius:10px;padding:10px;max-height:340px;overflow:auto;white-space:pre-wrap;font:12.5px/1.5 ui-monospace,Consolas,monospace;display:none}
+.xem.mo{display:block}
+.trong{color:var(--xam);text-align:center;padding:14px;font-size:14px}
+.tk{font-size:12.5px;color:#D6D4CB;text-align:right;line-height:1.3}
+footer{text-align:center;color:var(--xam);font-size:12px;padding:10px 0 30px}
+@media (max-width:560px){header h1{font-size:15px}header small{display:none}main{padding:12px}.the{padding:14px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">K</div>
+  <div><h1>Kho Dữ Liệu</h1><small>Chuyển mọi loại dữ liệu thành chữ gọn – VND CAPITAL</small></div>
+  <div class="sp"></div>
+  <div class="tk" id="tk"></div>
+  <button class="btn toi nho" id="dangNhap">Đăng nhập Google</button>
+</header>
+<main>
+  <section class="the">
+    <h2><span class="so">1</span>Đưa dữ liệu vào</h2>
+    <div id="vung" tabindex="0">
+      <b>Kéo thả tệp vào đây hoặc bấm để chọn</b>
+      <span>PDF · Word · Excel · PowerPoint · Ảnh · ZIP · Video · Ghi âm · TXT/CSV/XML/HTML</span>
+    </div>
+    <input type="file" id="chonTep" multiple hidden>
+    <div style="margin-top:14px">
+      <label for="link" style="font-size:13px;color:var(--xam)">Hoặc dán link trang web (mỗi dòng một link)</label>
+      <textarea id="link" placeholder="https://..."></textarea>
+      <div class="loi-nhap" id="loiLink"></div>
+      <div class="hang"><button class="btn cam" id="themLink">Thêm link</button></div>
+    </div>
+  </section>
+
+  <section class="the">
+    <h2><span class="so">2</span>Cài đặt xử lý</h2>
+    <div class="caidat">
+      <div>
+        <label for="ngonNgu">Ngôn ngữ giọng nói (video, ghi âm)</label>
+        <select id="ngonNgu">
+          <option value="vietnamese">Tiếng Việt</option>
+          <option value="english">Tiếng Anh</option>
+          <option value="chinese">Tiếng Trung</option>
+          <option value="">Tự nhận biết</option>
+        </select>
+      </div>
+      <div>
+        <label for="moHinh">Độ chính xác chuyển giọng nói</label>
+        <select id="moHinh">
+          <option value="onnx-community/whisper-small">Chính xác (khuyên dùng, tải ~250 MB lần đầu)</option>
+          <option value="onnx-community/whisper-base">Nhanh, kém chính xác hơn (tải ~80 MB lần đầu)</option>
+        </select>
+      </div>
+      <div>
+        <label for="ocr">Ngôn ngữ đọc chữ trong ảnh / bản scan</label>
+        <select id="ocr">
+          <option value="vie+eng">Tiếng Việt + Anh</option>
+          <option value="vie+eng+chi_sim">Việt + Anh + Trung</option>
+          <option value="eng">Chỉ tiếng Anh</option>
+        </select>
+      </div>
+    </div>
+    <div class="goiy" id="goiyMay"></div>
+  </section>
+
+  <section class="the">
+    <h2><span class="so">3</span>Kết quả <span class="sp"></span>
+      <button class="btn nho" id="luuLai" hidden>Lưu lại lên Drive các mục chưa lưu</button>
+      <button class="btn nho" id="taiHet" hidden>Tải tất cả (.zip)</button>
+    </h2>
+    <div id="ds"><div class="trong">Chưa có dữ liệu. Kết quả được chuyển thành chữ gọn, lưu vào thư mục “Kho du lieu” trên Google Drive của bạn kèm tệp MUC_LUC.md.</div></div>
+  </section>
+  <footer>Mọi xử lý chạy ngay trên máy của bạn – tệp không gửi lên máy chủ nào. Chỉ link web đi qua dịch vụ đọc trang r.jina.ai.</footer>
+</main>
+<script src="config.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
